@@ -32,8 +32,8 @@ class Counter extends Component {
         <span className="badge badge-primary m-1">{this.formatCount()}</span>
         <button onClick={this.handleIncrement} className="btn btn-secondary">
           Increment
-        </button> 
-        <br></br>
+        </button>
+        <br />
       </React.Fragment>
     );
   }
