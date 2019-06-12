@@ -16,7 +16,7 @@ class Counters extends Component {
       <React.Fragment>
         <div>
           {console.log(this.state)}
-          {this.state.counters.map(counter => (
+          {this.state.value.map(counter => (
             <Counter key={counter.id} value={counter.value} selected />
           ))}
         </div>
