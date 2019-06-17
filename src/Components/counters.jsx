@@ -2,31 +2,9 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
-  state = {
-    value: [
-      { id: 1, value: 2 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 }
-    ]
-  };
-
-  handleDelete = counterId => {
-    const value = this.state.value.filter(i => i.id !== counterId);
-    this.setState({ value });
-  };
-
-  handleReset = ()=> {
-    const value = this.state.value.map(c => {
-      c.value = 0;
-      return c;
-    });
-    this.setState({ value });
-    console.log(value);
-  }
 
   checkValues() {
-    if (this.state.value.length === 0) {
+    if (this.props.value.length === 0) {
       return (
         <div className="m-3 mt-4">
           <strong className="alert alert-info">
@@ -43,14 +21,19 @@ class Counters extends Component {
       <React.Fragment>
         {this.checkValues()}
         <div>
-          <button onClick={this.handleReset} className="btn btn-primary">
+          <button
+            onClick={this.props.onReset}
+            className="btn btn-primary btn-sm m-2"
+          >
             Reset
           </button>
-          {this.state.value.map(counter => (
+          {this.props.value.map(counter => (
             <Counter
               key={counter.id}
               counters={counter}
-              onDelete={this.handleDelete}
+              onDelete={this.props.onDelete}
+              onIncrement={this.props.onIncrement}
+              onDecrement={this.props.onDecrement}
               selected
             />
           ))}
